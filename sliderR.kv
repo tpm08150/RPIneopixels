@@ -1,0 +1,91 @@
+<MyLayout>
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint_y: None
+        size: root.width,  150
+        
+        
+        Label:
+            id: slider_label
+            text: "Red"
+            font_size: 20
+           
+        Slider:
+            id: slider_red
+            min: 0
+            max: 255
+            step: 1
+            orientation: "vertical"
+            on_value: root.slide_it_red(*args)
+            value: 0
+            value_track: True
+            value_track_width: 6
+            value_track_color: 'red'
+        
+        Label:
+            id: slider_label
+            text: "Green"
+            font_size: 20
+           
+        Slider:
+            id: slider_green
+            min: 0
+            max: 255
+            step: 1
+            #height: 300
+            orientation: "vertical"
+            on_value: root.slide_it_green(*args)
+            value: 0
+            value_track: True
+            value_track_width: 6
+            value_track_color: 'green'
+        
+        Label:
+            id: slider_label
+            text: "Blue"
+            font_size: 20
+        
+        Slider:
+            id: slider_blue
+            min: 0
+            max: 255
+            step: 1
+            #height: 300
+            orientation: "vertical"
+            on_value: root.slide_it_blue(*args)
+            value: 0
+            value_track: True
+            value_track_width: 6
+            value_track_color: 'blue'
+            
+        Label:
+            id: slider_label
+            text: "Brightness"
+            font_size: 20
+        
+        Slider:
+            min: 0
+            max: 1
+            step: .01
+            #height: 300
+            orientation: "vertical"
+            on_value: root.slide_it_brightness(*args)
+            value_track: True
+            value_track_width: 6
+            value_track_color: 'white'
+          
+        Label:
+            id: slider_label
+            text: "Speed"
+            font_size: 20
+        
+        Slider:
+            min: 2
+            max: 20
+            step: 1
+            #height: 300
+            orientation: "vertical"
+            on_value: root.slide_it_speed(*args)
+            value_track: True
+            value_track_width: 6
+            value_track_color: 'white'

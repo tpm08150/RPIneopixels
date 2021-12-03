@@ -916,6 +916,7 @@ class MyLayout(GridLayout):
         global Rcolor
         #print(preset1._set_item(1,255,0,255,0))
         file = open("/home/pi/Desktop/NeoPixelApp/kivySaveFileDefault.py", "w")
+        #file = open("/home/pi/Desktop/RPIneopixels-main/kivySaveFileDefault.py", "w")
         x = 0
         for i in colorList:
             file.write(f"\ncolor{x + 1} = " + str(colorList[x]))

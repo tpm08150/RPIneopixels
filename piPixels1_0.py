@@ -37,7 +37,7 @@ track = 0
 Builder.load_file('sliderR.kv')
 
 # LED strip configuration:
-LED_COUNT = 1500  # Number of LED pixels.
+LED_COUNT = 1000  # Number of LED pixels.
 LED_PIN = board.D18  # GPIO pin
 LED_BRIGHTNESS = 0.1  # LED brightness
 LED_ORDER = neopixel.RGB  # order of LED colours. May also be RGB, GRBW, or RGBW
@@ -155,70 +155,70 @@ presetList = [preset1, preset2, preset3, preset4, preset5, preset6, preset7, pre
 
 programCueList = [programCue1, programCue2, programCue3, programCue4, programCue5, programCue6, programCue7, programCue8]
 
-group1 = [0,0]
-group2 = [0,0]
-group3 = [0,0]
-group4 = [0,0]
-group5 = [0,0]
-group6 = [0,0]
-group7 = [0,0]
-group8 = [0,0]
-group9 = [0,0]
-group10 = [0,0]
-group11 = [0,0]
-group12 = [0,0]
-group13 = [0,0]
-group14 = [0,0]
-group15 = [0,0]
-group16 = [0,0]
-group17 = [0,0]
-group18 = [0,0]
-group19 = [0,0]
-group20 = [0,0]
-group21 = [0,0]
-group22 = [0,0]
-group23 = [0,0]
-group24 = [0,0]
-group25 = [0,0]
-group26 = [0,0]
-group27 = [0,0]
-group28 = [0,0]
-group29 = [0,0]
-group30 = [0,0]
-group31 = [0,0]
-group32 = [0,0]
-group33 = [0,0]
-group34 = [0,0]
-group35 = [0,0]
-group36 = [0,0]
-group37 = [0,0]
-group38 = [0,0]
-group39 = [0,0]
-group40 = [0,0]
-group41 = [0,0]
-group42 = [0,0]
-group43 = [0,0]
-group44 = [0,0]
-group45 = [0,0]
-group46 = [0,0]
-group47 = [0,0]
-group48 = [0,0]
-group49 = [0,0]
-group50 = [0,0]
-group51 = [0,0]
-group52 = [0,0]
-group53 = [0,0]
-group54 = [0,0]
-group55 = [0,0]
-group56 = [0,0]
-group57 = [0,0]
-group58 = [0,0]
-group59 = [0,0]
-group60 = [0,0]
-group61 = [0,0]
-group62 = [0,0]
-group63 = [0,0]
-group64 = [0,0]
+# group1 = [0,0]
+# group2 = [0,0]
+# group3 = [0,0]
+# group4 = [0,0]
+# group5 = [0,0]
+# group6 = [0,0]
+# group7 = [0,0]
+# group8 = [0,0]
+# group9 = [0,0]
+# group10 = [0,0]
+# group11 = [0,0]
+# group12 = [0,0]
+# group13 = [0,0]
+# group14 = [0,0]
+# group15 = [0,0]
+# group16 = [0,0]
+# group17 = [0,0]
+# group18 = [0,0]
+# group19 = [0,0]
+# group20 = [0,0]
+# group21 = [0,0]
+# group22 = [0,0]
+# group23 = [0,0]
+# group24 = [0,0]
+# group25 = [0,0]
+# group26 = [0,0]
+# group27 = [0,0]
+# group28 = [0,0]
+# group29 = [0,0]
+# group30 = [0,0]
+# group31 = [0,0]
+# group32 = [0,0]
+# group33 = [0,0]
+# group34 = [0,0]
+# group35 = [0,0]
+# group36 = [0,0]
+# group37 = [0,0]
+# group38 = [0,0]
+# group39 = [0,0]
+# group40 = [0,0]
+# group41 = [0,0]
+# group42 = [0,0]
+# group43 = [0,0]
+# group44 = [0,0]
+# group45 = [0,0]
+# group46 = [0,0]
+# group47 = [0,0]
+# group48 = [0,0]
+# group49 = [0,0]
+# group50 = [0,0]
+# group51 = [0,0]
+# group52 = [0,0]
+# group53 = [0,0]
+# group54 = [0,0]
+# group55 = [0,0]
+# group56 = [0,0]
+# group57 = [0,0]
+# group58 = [0,0]
+# group59 = [0,0]
+# group60 = [0,0]
+# group61 = [0,0]
+# group62 = [0,0]
+# group63 = [0,0]
+# group64 = [0,0]
 
 groupList = [group1, group2, group3, group4, group5, group6, group7, group8,
              group9, group10, group11, group12, group13, group14, group15, group16,
@@ -228,14 +228,14 @@ groupList = [group1, group2, group3, group4, group5, group6, group7, group8,
              group41, group42, group43, group44, group45, group46, group47, group48,
              group49, group50, group51, group52, group53, group54, group55, group56,
              group57, group58, group59, group60, group61, group62, group63, group64]
-groupNamesList = ['Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5', 'Group 6', 'Group 7', 'Group 8',
-                  'Group 9', 'Group 10', 'Group 11', 'Group 12', 'Group 13', 'Group 14', 'Group 15', 'Group 16',
-                  'Group 17', 'Group 18', 'Group 19', 'Group 20', 'Group 21', 'Group 22', 'Group 23', 'Group 24',
-                  'Group 25', 'Group 26', 'Group 27', 'Group 28', 'Group 29', 'Group 30', 'Group 31', 'Group 32',
-                  'Group 33', 'Group 34', 'Group 35', 'Group 36', 'Group 37', 'Group 38', 'Group 39', 'Group 40',
-                  'Group 41', 'Group 42', 'Group 43', 'Group 44', 'Group 45', 'Group 46', 'Group 47', 'Group 48',
-                  'Group 49', 'Group 50', 'Group 51', 'Group 52', 'Group 53', 'Group 54', 'Group 55', 'Group 56',
-                  'Group 57', 'Group 58', 'Group 59', 'Group 60', 'Group 61', 'Group 62', 'Group 63', 'Group 64',]
+# groupNamesList = ['Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5', 'Group 6', 'Group 7', 'Group 8',
+#                   'Group 9', 'Group 10', 'Group 11', 'Group 12', 'Group 13', 'Group 14', 'Group 15', 'Group 16',
+#                   'Group 17', 'Group 18', 'Group 19', 'Group 20', 'Group 21', 'Group 22', 'Group 23', 'Group 24',
+#                   'Group 25', 'Group 26', 'Group 27', 'Group 28', 'Group 29', 'Group 30', 'Group 31', 'Group 32',
+#                   'Group 33', 'Group 34', 'Group 35', 'Group 36', 'Group 37', 'Group 38', 'Group 39', 'Group 40',
+#                   'Group 41', 'Group 42', 'Group 43', 'Group 44', 'Group 45', 'Group 46', 'Group 47', 'Group 48',
+#                   'Group 49', 'Group 50', 'Group 51', 'Group 52', 'Group 53', 'Group 54', 'Group 55', 'Group 56',
+#                   'Group 57', 'Group 58', 'Group 59', 'Group 60', 'Group 61', 'Group 62', 'Group 63', 'Group 64',]
 
 group = 0
 saveGroup = 0
@@ -297,23 +297,23 @@ presetCall1 = 0
 
 color = 0
 
-color1 = (0, 0, 0)
-color2 = (0, 0, 0)
-color3 = (0, 0, 0)
-color4 = (0, 0, 0)
-color5 = (0, 0, 0)
-color6 = (0, 0, 0)
-color7 = (0, 0, 0)
-color8 = (0, 0, 0)
+# color1 = (0, 0, 0)
+# color2 = (0, 0, 0)
+# color3 = (0, 0, 0)
+# color4 = (0, 0, 0)
+# color5 = (0, 0, 0)
+# color6 = (0, 0, 0)
+# color7 = (0, 0, 0)
+# color8 = (0, 0, 0)
 colorBlank = (0, 0, 0)
-color9 = (0, 0, 0)
-color10 = (0, 0, 0)
-color11 = (0, 0, 0)
-color12 = (0, 0, 0)
-color13 = (0, 0, 0)
-color14 = (0, 0, 0)
-color15 = (0, 0, 0)
-color16 = (0, 0, 0)
+# color9 = (0, 0, 0)
+# color10 = (0, 0, 0)
+# color11 = (0, 0, 0)
+# color12 = (0, 0, 0)
+# color13 = (0, 0, 0)
+# color14 = (0, 0, 0)
+# color15 = (0, 0, 0)
+# color16 = (0, 0, 0)
 
 colorList = [color1, color2, color3, color4, color5, color6, color7, color8, colorBlank,
              color9, color10, color11, color12, color13, color14, color15, color16]
@@ -2929,11 +2929,11 @@ class MyLayout(GridLayout):
                 if len(programCueList[pC]) > 0 and len(superCueList[sC]) > 0:
                     sC = programCueList[pC][p]
                     cue = superCueList[sC][c]
+                    x = 0
                     for i in presetList:          
                         if setPixel % 2 == 0 and cue == x + 1:
                             presetList[x].show()
                         x += 1
-                    c += 1
                     c += 1
                     colorSelect = Clock.schedule_once(self.RGB, speed)
                     self.playButton.background_color = 'red'

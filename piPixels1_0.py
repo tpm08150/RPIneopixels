@@ -37,7 +37,7 @@ track = 0
 Builder.load_file('sliderR.kv')
 
 # LED strip configuration:
-LED_COUNT = int(input("number of LEDS: "))  # Number of LED pixels.
+#LED_COUNT = int(input("number of LEDS: "))  # Number of LED pixels.
 LED_PIN = board.D18  # GPIO pin
 LED_BRIGHTNESS = 0.1  # LED brightness
 LED_ORDER = neopixel.RGB  # order of LED colours. May also be RGB, GRBW, or RGBW
@@ -112,8 +112,25 @@ preset62 = neopixel.NeoPixel(LED_PIN, LED_COUNT, brightness=LED_BRIGHTNESS, auto
 preset63 = neopixel.NeoPixel(LED_PIN, LED_COUNT, brightness=LED_BRIGHTNESS, auto_write=False, pixel_order=LED_ORDER)
 preset64 = neopixel.NeoPixel(LED_PIN, LED_COUNT, brightness=LED_BRIGHTNESS, auto_write=False, pixel_order=LED_ORDER)
 
+presetList = [preset1, preset2, preset3, preset4, preset5, preset6, preset7, preset8, preset9, preset10, preset11, preset12, preset13, preset14, preset15, preset16,
+              preset17, preset18, preset19, preset20, preset21, preset22, preset23, preset24, preset25, preset26, preset27, preset28, preset29, preset30, preset31, preset32,
+              preset33, preset34, preset35, preset36, preset37, preset38, preset39, preset40, preset41, preset42, preset43, preset44, preset45, preset46, preset47, preset48,
+              preset49, preset50, preset51, preset52, preset53, preset54, preset55, preset56, preset57, preset58, preset59, preset60, preset61, preset62, preset63, preset64]
 
+def presetLoad():
+    global x
+    global y
+    x = 0
+    for preset in presetList:
+        y = 0
+        for pixel in presetList[x]:
+            presetList[x]._set_item(y,presetSaveList[x][y][0],presetSaveList[x][y][1],presetSaveList[x][y][2],0)
+            y += 1
+            if y == len(presetSaveList[x]):
+                break
+        x += 1
 
+presetLoad()
 
 x = 0
 y = 0
@@ -139,10 +156,6 @@ y = 0
 
 superCueList = [superCue1, superCue2, superCue3, superCue4, superCue5, superCue6, superCue7, superCue8,
                 superCue9, superCue10, superCue11, superCue12, superCue13, superCue14, superCue15, superCue16]
-presetList = [preset1, preset2, preset3, preset4, preset5, preset6, preset7, preset8, preset9, preset10, preset11, preset12, preset13, preset14, preset15, preset16,
-              preset17, preset18, preset19, preset20, preset21, preset22, preset23, preset24, preset25, preset26, preset27, preset28, preset29, preset30, preset31, preset32,
-              preset33, preset34, preset35, preset36, preset37, preset38, preset39, preset40, preset41, preset42, preset43, preset44, preset45, preset46, preset47, preset48,
-              preset49, preset50, preset51, preset52, preset53, preset54, preset55, preset56, preset57, preset58, preset59, preset60, preset61, preset62, preset63, preset64]
 
 # programCue1 = []
 # programCue2 = []
@@ -346,18 +359,7 @@ def programCueRecording():
         x += 1
     presetList[cue - 1].show()
 
-def presetLoad():
-    global x
-    global y
-    x = 0
-    for preset in presetSaveList:
-        y = 0
-        for pixel in presetList[x]:
-            presetList[x]._set_item(y,presetSaveList[x][y][0],presetSaveList[x][y][1],presetSaveList[x][y][2],0)
-            y += 1
-        x += 1
 
-presetLoad()
 
 sliderStop = 0
 
@@ -457,9 +459,9 @@ class MyLayout(GridLayout):
         self.pixelGrid.add_widget(self.BGRPixelsButton)
         self.BGRPixelsButton.bind(on_press=self.BGRPixels)
         
-#         self.setPixelCount = Button(text='Ttl Pxls', background_color='gray', size_hint_x=0.04, size_hint_y=0.1)
-#         self.pixelGrid.add_widget(self.setPixelCount)
-#         self.setPixelCount.bind(on_press=self.setPixelAmount)
+        self.setPixelCount = Button(text='Ttl Pxls', background_color='gray', size_hint_x=0.04, size_hint_y=0.1)
+        self.pixelGrid.add_widget(self.setPixelCount)
+        self.setPixelCount.bind(on_press=self.setPixelAmount)
         
         self.pixelCountText = TextInput(text = f"{LED_COUNT}", multiline=False, font_size=14, size_hint_x=0.04, size_hint_y=0.1)
         self.pixelGrid.add_widget(self.pixelCountText)
@@ -1159,23 +1161,23 @@ class MyLayout(GridLayout):
             file.write(f"\npresetSave{x + 1} = " + str(presetList[x]))
             x += 1
         x = 0
-        #file.write(f"\nLED_COUNT = " + str(preset1._pixels))
+        file.write(f"\nLED_COUNT = " + str(preset1._pixels))
         file.write("\npresetSaveList = [presetSave1, presetSave2, presetSave3, presetSave4, presetSave5, presetSave6, presetSave7, presetSave8, \npresetSave9, presetSave10, presetSave11, presetSave12, presetSave13, presetSave14, presetSave15, presetSave16, \npresetSave17, presetSave18, presetSave19, presetSave20, presetSave21, presetSave22, presetSave23, presetSave24, \npresetSave25, presetSave26, presetSave27, presetSave28, presetSave29, presetSave30, presetSave31, \npresetSave32, presetSave33, presetSave34, presetSave35, presetSave36, presetSave37, presetSave38, presetSave39, \npresetSave40, presetSave41, presetSave42, presetSave43, presetSave44, presetSave45, presetSave46, presetSave47, presetSave48, \npresetSave49, presetSave50, presetSave51, presetSave52, presetSave53, presetSave54, presetSave55, presetSave56, \npresetSave57, presetSave58, presetSave59, presetSave60, presetSave61, presetSave62, presetSave63, presetSave64]")
         file.write("\ngroupNamesList = " + str(groupNamesList))
         file.close()
     
-#     def setPixelAmount(self, instance):
-#         global x
-#         global LED_COUNT
-#         global preset1
-#         LED_COUNT = int(self.pixelCountText.text)
-#         x = 0
-#         for i in presetList:
-#             presetList[x]._pixels = LED_COUNT
-#             presetList[x][2].append([0,0,0])
-#             x += 1
-#         print(preset1._pixels)
-#         print(preset1)
+    def setPixelAmount(self, instance):
+        global x
+        global LED_COUNT
+        global preset1
+        LED_COUNT = int(self.pixelCountText.text)
+        x = 0
+        for i in presetList:
+            presetList[x]._pixels = LED_COUNT
+            presetList[x][2].append([0,0,0])
+            x += 1
+        print(preset1._pixels)
+        print(preset1)
     
     def skip1P(self, instance):
         global skip
@@ -2794,11 +2796,11 @@ class MyLayout(GridLayout):
         
         RGBButtonListColor = [self.RGBPixelsButton, self.GRBPixelsButton, self.BGRPixelsButton]
         
-#         if self.pixelCountText.text.isdigit() is True:
-#             if LED_COUNT != int(self.pixelCountText.text):
-#                 self.setPixelCount.background_color = 'red'
-#             else:
-#                 self.setPixelCount.background_color = 'green'
+        if self.pixelCountText.text.isdigit() is True:
+            if LED_COUNT != int(self.pixelCountText.text):
+                self.setPixelCount.background_color = 'red'
+            else:
+                self.setPixelCount.background_color = 'green'
         
         x = 0
         for i in RGBButtonListColor:

@@ -457,9 +457,9 @@ class MyLayout(GridLayout):
         self.pixelGrid.add_widget(self.BGRPixelsButton)
         self.BGRPixelsButton.bind(on_press=self.BGRPixels)
         
-        self.setPixelCount = Button(text='Ttl Pxls', background_color='gray', size_hint_x=0.04, size_hint_y=0.1)
-        self.pixelGrid.add_widget(self.setPixelCount)
-        self.setPixelCount.bind(on_press=self.setPixelAmount)
+#         self.setPixelCount = Button(text='Ttl Pxls', background_color='gray', size_hint_x=0.04, size_hint_y=0.1)
+#         self.pixelGrid.add_widget(self.setPixelCount)
+#         self.setPixelCount.bind(on_press=self.setPixelAmount)
         
         self.pixelCountText = TextInput(text = f"{LED_COUNT}", multiline=False, font_size=14, size_hint_x=0.04, size_hint_y=0.1)
         self.pixelGrid.add_widget(self.pixelCountText)
@@ -1164,18 +1164,18 @@ class MyLayout(GridLayout):
         file.write("\ngroupNamesList = " + str(groupNamesList))
         file.close()
     
-    def setPixelAmount(self, instance):
-        global x
-        global LED_COUNT
-        global preset1
-        LED_COUNT = int(self.pixelCountText.text)
-        x = 0
-        for i in presetList:
-            presetList[x]._pixels = LED_COUNT
-            presetList[x][2].append([0,0,0])
-            x += 1
-        print(preset1._pixels)
-        print(preset1)
+#     def setPixelAmount(self, instance):
+#         global x
+#         global LED_COUNT
+#         global preset1
+#         LED_COUNT = int(self.pixelCountText.text)
+#         x = 0
+#         for i in presetList:
+#             presetList[x]._pixels = LED_COUNT
+#             presetList[x][2].append([0,0,0])
+#             x += 1
+#         print(preset1._pixels)
+#         print(preset1)
     
     def skip1P(self, instance):
         global skip
@@ -2794,11 +2794,11 @@ class MyLayout(GridLayout):
         
         RGBButtonListColor = [self.RGBPixelsButton, self.GRBPixelsButton, self.BGRPixelsButton]
         
-        if self.pixelCountText.text.isdigit() is True:
-            if LED_COUNT != int(self.pixelCountText.text):
-                self.setPixelCount.background_color = 'red'
-            else:
-                self.setPixelCount.background_color = 'green'
+#         if self.pixelCountText.text.isdigit() is True:
+#             if LED_COUNT != int(self.pixelCountText.text):
+#                 self.setPixelCount.background_color = 'red'
+#             else:
+#                 self.setPixelCount.background_color = 'green'
         
         x = 0
         for i in RGBButtonListColor:

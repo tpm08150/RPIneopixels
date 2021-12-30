@@ -1,5 +1,10 @@
 # RPIneopixels
 
+Clone github repository to RPI Desktop folder:
+cd Desktop
+git clone https://github.com/tpm08150/RPIneopixels.git
+
+
 #Installation Instructions
 Install Kivy from terminal:
 sudo apt update

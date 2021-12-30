@@ -37,7 +37,7 @@ track = 0
 Builder.load_file('sliderR.kv')
 
 # LED strip configuration:
-LED_COUNT = 1000  # Number of LED pixels.
+LED_COUNT = int(input("number of LEDS: "))  # Number of LED pixels.
 LED_PIN = board.D18  # GPIO pin
 LED_BRIGHTNESS = 0.1  # LED brightness
 LED_ORDER = neopixel.RGB  # order of LED colours. May also be RGB, GRBW, or RGBW
@@ -113,7 +113,7 @@ preset63 = neopixel.NeoPixel(LED_PIN, LED_COUNT, brightness=LED_BRIGHTNESS, auto
 preset64 = neopixel.NeoPixel(LED_PIN, LED_COUNT, brightness=LED_BRIGHTNESS, auto_write=False, pixel_order=LED_ORDER)
 
 
-LED_COUNT = 50
+
 
 x = 0
 y = 0
@@ -346,6 +346,18 @@ def programCueRecording():
         x += 1
     presetList[cue - 1].show()
 
+def presetLoad():
+    global x
+    global y
+    x = 0
+    for preset in presetSaveList:
+        y = 0
+        for pixel in presetList[x]:
+            presetList[x]._set_item(y,presetSaveList[x][y][0],presetSaveList[x][y][1],presetSaveList[x][y][2],0)
+            y += 1
+        x += 1
+
+presetLoad()
 
 sliderStop = 0
 
@@ -401,7 +413,7 @@ class MyLayout(GridLayout):
         self.RGBbrightness = TextInput(multiline=False, size_hint_x=0.1, font_size=14)
         self.textGrid.add_widget(self.RGBbrightness)
         
-        self.RGBbrightnessWeight = TextInput(text= '100', multiline=False, size_hint_x=0.1, font_size=14)
+        self.RGBbrightnessWeight = TextInput(text= "100", multiline=False, size_hint_x=0.1, font_size=14)
         self.textGrid.add_widget(self.RGBbrightnessWeight)
         
         self.RGBspeed = TextInput(multiline=False, size_hint_x=0.2, font_size=14)
@@ -449,7 +461,7 @@ class MyLayout(GridLayout):
         self.pixelGrid.add_widget(self.setPixelCount)
         self.setPixelCount.bind(on_press=self.setPixelAmount)
         
-        self.pixelCountText = TextInput(text = '50', multiline=False, font_size=14, size_hint_x=0.04, size_hint_y=0.1)
+        self.pixelCountText = TextInput(text = f"{LED_COUNT}", multiline=False, font_size=14, size_hint_x=0.04, size_hint_y=0.1)
         self.pixelGrid.add_widget(self.pixelCountText)
         
         self.skip1Pixel = Button(text='skp 1p', background_color='gray', size_hint_x=0.04, size_hint_y=0.1)
@@ -1106,13 +1118,8 @@ class MyLayout(GridLayout):
         self.RGBspeed.text = str(10)
         
         x = 0
-#         
-        for preset in presetSaveList:
-            y = 0
-            for pixel in presetSaveList[x]:
-                presetList[x]._set_item(y,presetSaveList[x][y][0],presetSaveList[x][y][1],presetSaveList[x][y][2],0)
-                y += 1
-            x += 1
+        
+
 
     #         self.step1 = Button(text='1', background_color='red', size_hint=(.3, .25))
     #         self.step1.bind(on_press=self.test)
@@ -1126,9 +1133,11 @@ class MyLayout(GridLayout):
     def saveFile(self, instance):
         global color
         global Rcolor
+
+            
         #print(preset1._set_item(1,255,0,255,0))
         #file = open("/home/pi/Desktop/NeoPixelApp/kivySaveFileDefault.py", "w")
-        file = open("/home/pi/Desktop/RPIneopixels-main/kivySaveFileDefault.py", "w")
+        file = open("/home/pi/Desktop/RPIneopixels/kivySaveFileDefault.py", "w")
         x = 0
         for i in colorList:
             file.write(f"\ncolor{x + 1} = " + str(colorList[x]))
@@ -1150,6 +1159,7 @@ class MyLayout(GridLayout):
             file.write(f"\npresetSave{x + 1} = " + str(presetList[x]))
             x += 1
         x = 0
+        #file.write(f"\nLED_COUNT = " + str(preset1._pixels))
         file.write("\npresetSaveList = [presetSave1, presetSave2, presetSave3, presetSave4, presetSave5, presetSave6, presetSave7, presetSave8, \npresetSave9, presetSave10, presetSave11, presetSave12, presetSave13, presetSave14, presetSave15, presetSave16, \npresetSave17, presetSave18, presetSave19, presetSave20, presetSave21, presetSave22, presetSave23, presetSave24, \npresetSave25, presetSave26, presetSave27, presetSave28, presetSave29, presetSave30, presetSave31, \npresetSave32, presetSave33, presetSave34, presetSave35, presetSave36, presetSave37, presetSave38, presetSave39, \npresetSave40, presetSave41, presetSave42, presetSave43, presetSave44, presetSave45, presetSave46, presetSave47, presetSave48, \npresetSave49, presetSave50, presetSave51, presetSave52, presetSave53, presetSave54, presetSave55, presetSave56, \npresetSave57, presetSave58, presetSave59, presetSave60, presetSave61, presetSave62, presetSave63, presetSave64]")
         file.write("\ngroupNamesList = " + str(groupNamesList))
         file.close()
@@ -1157,7 +1167,15 @@ class MyLayout(GridLayout):
     def setPixelAmount(self, instance):
         global x
         global LED_COUNT
+        global preset1
         LED_COUNT = int(self.pixelCountText.text)
+        x = 0
+        for i in presetList:
+            presetList[x]._pixels = LED_COUNT
+            presetList[x][2].append([0,0,0])
+            x += 1
+        print(preset1._pixels)
+        print(preset1)
     
     def skip1P(self, instance):
         global skip
@@ -2626,7 +2644,7 @@ class MyLayout(GridLayout):
     def slide_it_speed(self, *args):
         global speed
         speed = 1/args[1]
-        self.RGBspeed.text = str(round(float(args[1]) * 5, 0))
+        self.RGBspeed.text = str(round(float(args[1]) * 1, 0))
 
     def Red(self, instance):
         np.fill((255, 0, 0))
@@ -2768,6 +2786,8 @@ class MyLayout(GridLayout):
         global LED_COUNT
         global brightnessWeight
         global skip
+        global preset1
+        start = time.time()
         
         if play % 2 == 0:
             colorSelect = Clock.schedule_once(self.RGB, .001)
@@ -2883,10 +2903,12 @@ class MyLayout(GridLayout):
                 for i in range(pixelHigh - pixelLow):
                     presetList[x][pixelLow] = (Rcolor, Gcolor, Bcolor)
                     presetList[x].brightness = master
+                    #print(presetList[x]._pixels)
                     pixelLow += 1
                 presetList[x].show()
+                
             x += 1
-
+        
         x = 0
         for i in presetList:
             if selectGroup % 2 == 1 and cue == x + 1:
@@ -2899,6 +2921,7 @@ class MyLayout(GridLayout):
                         presetList[x].brightness = master
                     y += 2
                 presetList[x].show()
+                
             x += 1
 
 #         x = 0
@@ -3100,7 +3123,9 @@ class MyLayout(GridLayout):
         
         if self.RGBbrightnessWeight.text.isdigit() is True and int(self.RGBbrightnessWeight.text) > 0:
             brightnessWeight = int(self.RGBbrightnessWeight.text)
+        end = time.time()
         
+        #print((end-start) + speed)
 class MyApp(App):
     title = 'PiPixels'
     def build(self):

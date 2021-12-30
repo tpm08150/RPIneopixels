@@ -1,5 +1,7 @@
 # RPIneopixels
 
+Note: you will need to connect your Data to GPIO pin 18 on the Raspberry Pi
+
 **1. Clone github repository to RPI Desktop folder:**
 
 cd Desktop

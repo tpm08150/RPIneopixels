@@ -1,6 +1,0 @@
-[Desktop Entry]
-Version= 1.0
-Name= RPI Pixels
-Exec = sudo -E /home/pi/Desktop/RPIneopixels-main/KivyRPIGUINeoPixel08.py
-Type = Application
-Icon = /home/pi/Desktop/download.jpeg
